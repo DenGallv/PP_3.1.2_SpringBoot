@@ -31,7 +31,7 @@ public class UserController {
 
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("newUser") User user) {
-        userService.saveUser(user);
+        userService.saveOrUpdateUser(user);
         return "redirect:/";
     }
 
@@ -42,8 +42,8 @@ public class UserController {
     }
 
     @PatchMapping("/updateUser")
-    public String updateUser(@ModelAttribute("userFromDB") User user, @RequestParam("id") Long id) {
-        userService.updateUser(user, id);
+    public String updateUser(@ModelAttribute("userFromDB") User user) {
+        userService.saveOrUpdateUser(user);
         return "redirect:/";
     }
 
